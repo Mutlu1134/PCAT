@@ -101,3 +101,48 @@ Photo.findByIdAndDelete(id, (err, data) => {
 });
 
 ```
+
+# Gerçek uygulamada Database işlemleri yapmak için
+1. DB'ye post yapmak için html dosyalarında/ ejs'lerde 
+`methot ="POST" action="/photos"` olması gerekir. photos yerine herhangi birşey yazılabilir. ama controller'da bu photos yakalanacak ona göre birşeyler yapılacaktır.
+2. Aşağıdaki adımda post ile gönderilenleri yakalamak için 2 adet middleware yazmak gerekiyor. (Eskiden bunlar yerine bodyparser diye bir modül kullanılıyormuş.) Bu middleware'ler;
+```
+app.use(express.urlencoded({ extended: true })); // url'deki datayı okumaya yarar
+app.use(express.json()); // url'deki datayı jsoon formatına çevirmemizi sağlar
+```
+3. post edilenleri yakalamak için app.js dosyasında yakalamamız gerekiyor. Örneğimizde /photos'du.
+```
+app.post('/photos', (req, res) => {
+	console.log(req.body);
+	res.redirect('/'); // req-res döngüsünü sonlandırmak için anasayfaya redirect ettik.
+});
+```
+4. Şimdi Girilen verileri console yerine direkt database'e göndereceğiz.
+5. ilk olarak kök dizine `models` klasörü açıyoruz. Altına `models/Photo.js` isimli modelimizi oluşturuyoruz. Modelimizin içine Schema oluşturma Model oluşturma ve Export etme işlemleri yapıyoruz.
+```
+import mongoose from 'mongoose';
+
+//create schema photo ekleyeceğimiz için ismini ptohoschema yazdık.
+const PhotoSchema = new mongoose.Schema({
+	title: String,
+	description: String,
+	dateCreated: {
+		// Veritabanına girilen zamanı default olarak tutar
+		type: Date,
+		default: Date.now,
+	},
+});
+
+// Şablonu Schemayı baz alarak modeli oluşturacağız.
+const Photo = mongoose.model('Photo', PhotoSchema);
+
+export default = Photo;
+```
+6. Export edilen modeli app.js dosyamıza import ediyoruz. `import Photo from './models/Photo';`
+7. DB connect işlemimizi app.js dosyamızda yapıyoruz.
+```
+import mongoose from 'mongoose';
+
+//Connect DB
+mongoose.connect('mongodb://localhost/pcat-test-db');
+```
