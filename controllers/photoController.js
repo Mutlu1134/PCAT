@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 //import models
 // import Photo from '../models/Photo.js';
 // const Photo = require('../models/Photo.js');

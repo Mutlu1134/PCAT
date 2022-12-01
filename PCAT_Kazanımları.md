@@ -399,3 +399,5 @@ mongoose.connect(
 `    "test": "echo \"Error: no test specified\" && exit 1",`
 bi altındaki start'ı daaşağıdaki şekilde güncelliyooruz. nodemon yerine node oluyor.
 `"start": "node app.js"`
+5. render.com'a deploy başarısız oluyor açılmıyor.
+`npm install`, `npm start` yazdım.
