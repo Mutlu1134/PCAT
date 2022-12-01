@@ -393,3 +393,9 @@ mongoose.connect(
 	});
 ``` 
 2. Hosting hizmeti için heroku ücretli olduğundan render.com üzerinden uygulama açtık ve new static site'ı seçtik ve github'ı bağladık. Uygulamamızı github'a yükleyeceğiz.
+3. Hosting açmadan önce port numaramızı şu şekilde ayarlalamız gerekiyor. Böylece hosting sağlayıcı müsait olan port numarasını verebilecek veya 8000 'i verecek
+`const port = process.env.PORT || 8000;`
+4. package.json dosyasındaki aşağıdaki test script'ini siliyoruz.
+`    "test": "echo \"Error: no test specified\" && exit 1",`
+bi altındaki start'ı daaşağıdaki şekilde güncelliyooruz. nodemon yerine node oluyor.
+`"start": "node app.js"`

@@ -24,7 +24,7 @@ const pageController = require('./controllers/pageController.js');
 const Photo = require('./models/Photo.js');
 
 const app = express();
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
 	console.log(`Server has been started on ${port} port`);
@@ -34,7 +34,7 @@ app.listen(port, () => {
 // mongoose.connect('mongodb://localhost/pcat-test-db');
 
 mongoose.connect(
-	`mongodb+srv://Mutlusprojects:${mongoDbAtlasPass.password}@cluster0.nwclhox.mongodb.net/test`
+	`mongodb+srv://MutluPcatProject:xEyZ1oJz0WQ0UyLk@cluster0.jbseg4g.mongodb.net/test`
 )
 	.then(() => {
 		console.log('DB Connected !');
