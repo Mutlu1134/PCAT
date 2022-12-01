@@ -12,8 +12,6 @@ const fs = require('fs');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 
-const mongoDbAtlasPass = require('./pass/mongoDbAtlasPass');
-
 //controllers
 const photoController = require('./controllers/photoController.js');
 const pageController = require('./controllers/pageController.js');
