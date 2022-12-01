@@ -143,4 +143,6 @@ dist
 
 # Kendi eklediğim
 /temp
+/pass
+/mongoDbAtlasPass
 # End of https://www.toptal.com/developers/gitignore/api/node

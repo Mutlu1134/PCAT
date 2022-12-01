@@ -12,6 +12,8 @@ const fs = require('fs');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 
+const mongoDbAtlasPass = require('./pass/mongoDbAtlasPass');
+
 //controllers
 const photoController = require('./controllers/photoController.js');
 const pageController = require('./controllers/pageController.js');
@@ -29,8 +31,17 @@ app.listen(port, () => {
 });
 
 //Connect DB
-mongoose.connect('mongodb://localhost/pcat-test-db');
+// mongoose.connect('mongodb://localhost/pcat-test-db');
 
+mongoose.connect(
+	`mongodb+srv://Mutlusprojects:${mongoDbAtlasPass.password}@cluster0.nwclhox.mongodb.net/test`
+)
+	.then(() => {
+		console.log('DB Connected !');
+	})
+	.catch((err) => {
+		console.log(err);
+	});
 //TEMPLATE ENGINE
 app.set('view engine', 'ejs');
 

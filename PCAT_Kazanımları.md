@@ -378,3 +378,18 @@ exports.getAllPhoto = async (req, res) => {
 	<% } %>
 </ul>
 ```
+
+# HOSTING VE UZAK DATABASE İLE SİTEYİ CANLIYA ALMA.
+1. Uzak database için mongodb atlas uygulaması üzerinden new cluster açıp connect via vscode seçip linki kopyalıyoruz. ve mongoose.connect'e yapıştırıyoruz. mongoose.connect bize promise dönüyor bunları .then ve .catch ile yakalıyoruz bağlandıysa Db connected yazdırıyoruz.
+```
+mongoose.connect(
+	'mongodb+srv://Mutlusprojects:992500@cluster0.nwclhox.mongodb.net/test'
+)
+	.then(() => {
+		console.log('DB Connected !');
+	})
+	.catch((err) => {
+		console.log(err);
+	});
+``` 
+2. Hosting hizmeti için heroku ücretli olduğundan render.com üzerinden uygulama açtık ve new static site'ı seçtik ve github'ı bağladık. Uygulamamızı github'a yükleyeceğiz.
