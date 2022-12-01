@@ -40,25 +40,25 @@ https://templatemo.com/tm-552-video-catalog
 				<main>
 					<div class="row mb-5 pb-4">
 						<div class="col-12">
-							<img src="img/video-detail-1.jpg" alt="Image" class="img-fluid tm-catalog-item-img">
+							<img src="<%= clickedphoto.image %> " alt="Image" class="img-fluid tm-catalog-item-img">
 						</div>
 					</div>
 					<div class="row mb-5 pb-5">
 						<div class="col-xl-8 col-lg-7">
 							<!-- Video description -->
 							<div class="tm-video-description-box">
-								<h2 class="mb-5 tm-video-title">Mauris dapibus urna nec ipsum posuere</h2>
-								<p class="mb-4">Cras dictum pretium est, et imperdiet ex. Fusce vitae vestibulum ipsum. Maecenas ultricies ipsum a urna ullamcorper, id interdum est blandit. Vivamus sit amet justo sed erat iaculis consequat. Nulla suscipit posuere lectus ut venenatis. Proin sed orci eget tellus euismod vulputate eu eu arcu.</p>	
+								<h2 class="mb-5 tm-video-title"><%= clickedphoto.title %> </h2>
+								<p class="mb-4"><%= clickedphoto.description %></p>	
 							</div>							
 						</div>
 						<div class="col-xl-4 col-lg-5">
 							<!-- Share box -->
 							<div class="tm-bg-gray tm-share-box">
 								<div class="text-center">
-									<button class="btn btn-primary p-0 mb-4 tm-btn-animate tm-btn-download tm-icon-download"><span>Update Details</span></button>	
+									<a href="/edit/<%= clickedphoto._id %> " class="btn btn-primary p-0 mb-4 tm-btn-animate tm-btn-download tm-icon-download"><span>Update Details</span></a>	
 								</div>	
 								<div class="text-center">
-									<button class="btn btn-danger p-0 tm-btn-animate tm-btn-download tm-icon-download"><span>Delete Photo</span></button>	
+									<a class="btn btn-danger p-0 tm-btn-animate tm-btn-download tm-icon-download" onclick="confirm('Do you want to delete photo?')" href="/photo/<%=clickedphoto._id%>?_method=DELETE" ><span>Delete Photo</span></a>	
 								</div>								
 							</div>
 						</div>

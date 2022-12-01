@@ -14,6 +14,7 @@ const Photo = mongoose.model('Photo', PhotoSchema);
 
 // Model de DataBase'de collection ve document'i oluşturacak
 // Veritabanına ilk veri(collection->document) oluşturma
+
 // Photo.create({
 // 	title: 'Photo title 1',
 // 	description: 'Photo Description 1',

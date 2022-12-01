@@ -1,12 +1,25 @@
-import { publicDecrypt } from 'crypto';
-import express from 'express';
-import { get } from 'http';
-import { url } from 'inspector';
-import path, { dirname } from 'path';
-import ejs from 'ejs';
-import mongoose from 'mongoose';
+// const circle = require('./circle.js');
+const express = require('express');
+// import express from 'express';
+
+// import fileUpload from 'express-fileupload';
+const fileUpload = require('express-fileupload');
+
+// import fs from 'fs';
+const fs = require('fs');
+
+// import methodOverride from 'method-override';
+const methodOverride = require('method-override');
+const mongoose = require('mongoose');
+
+//controllers
+const photoController = require('./controllers/photoController.js');
+const pageController = require('./controllers/pageController.js');
+
+// import photoController from './controllers/photoController.js';
 //Models
-import Photo from './models/Photo.js';
+// import Photo from './models/Photo.js';
+const Photo = require('./models/Photo.js');
 
 const app = express();
 const port = 8000;
@@ -45,30 +58,23 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(fileUpload());
+app.use(methodOverride('_method', { methods: ['POST', 'GET'] }));
 
 //ROUTING
 // // EJS YOK İKEN;
 // app.get('/', (req, res) => {
 // 	res.sendFile(path.resolve('./temp/index.html')); // index.html dosyasını göndermek
 // });
-//EJS VAR IKEN SENDFILE YERINE RENDER
-app.get('/', (req, res) => {
-	res.render('../view/index.ejs'); // index.ejs dosyasını göndermek
-});
-app.get('/index', (req, res) => {
-	res.render('../view/index.ejs'); // index.ejs dosyasını göndermek
-});
-app.get('/about', (req, res) => {
-	res.render('../view/about.ejs'); // about.ejs dosyasını göndermek
-});
-app.get('/addphoto', (req, res) => {
-	res.render('../view/addphoto.ejs'); // contact.ejs dosyasını göndermek
-});
-app.get('/editphoto', (req, res) => {
-	res.render('../view/editphoto.ejs'); // contact.ejs dosyasını göndermek
-});
 
-app.post('/photos', (req, res) => {
-	console.log(req.body);
-	res.redirect('/'); // req-res döngüsünü sonlandırmak için anasayfaya redirect ettik.
-});
+//EJS VAR IKEN SENDFILE YERINE RENDER
+app.get('/', photoController.getAllPhoto);
+app.get('/index', photoController.getAllPhoto);
+app.get('/photo/:id', photoController.getPhoto);
+app.delete('/photo/:id', photoController.deletePhoto);
+app.post('/photos', photoController.uploadPhoto);
+app.get('/edit/:id', photoController.editPhoto);
+app.put('/photos/:id', photoController.showPhoto);
+
+app.get('/about', pageController.getAboutPage);
+app.get('/addphoto', pageController.getAddPage);
