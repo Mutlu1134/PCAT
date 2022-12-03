@@ -20,7 +20,7 @@ exports.getAllPhoto = async (req, res) => {
 	// zamana göre sıralama son girilen en başta olması için sort ifadesi
 	const totalPhotos = await Photo.find({}).countDocuments();
 	let page = req.query.page || 1;
-	console.log(page);
+
 	let photoEachPage = 3;
 	let totalPages = Math.ceil(totalPhotos / photoEachPage);
 	const photos = await Photo.find({})

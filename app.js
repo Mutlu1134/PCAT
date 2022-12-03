@@ -32,7 +32,7 @@ app.listen(port, () => {
 // mongoose.connect('mongodb://localhost/pcat-test-db');
 
 mongoose.connect(
-	`mongodb+srv://MutluPcatProject:xEyZ1oJz0WQ0UyLk@cluster0.jbseg4g.mongodb.net/test`
+	`mongodb+srv://MutluPcatProject:xEyZ1oJz0WQ0UyLk@cluster0.jbseg4g.mongodb.net/Cluster0`
 )
 	.then(() => {
 		console.log('DB Connected !');

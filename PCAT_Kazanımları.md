@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
 1. Mongoose modülü sayesinde mongoDB CRUD işlemlerini kolayca yapabiliriz. İndirmek için `npm install mongoose`
 2. mongoose'u import etmek lazımm. `import mongoose from 'mongoose';`
 3. database'e bağlanmak lazım. `mongoose.connect("mongodb://localhost/pcat-test-db")`
-4. BU ADIMA GEREK YOK Bir şablon schema eklemek lazım. `const Schema = new mongoose.Schema();`
+4. BU ADIMA GEREK YOK Bir şablon schema eklemek lazım. Aşağıda photoschema ? new mongoose.schema yazdığımı için bu satırı yazmasak olur. `const Schema = new mongoose.Schema();`
 5. Şablona göre schema üretmek lazım. PhotoSchema isimli schema;
 ```
 //create schema photo ekleyeceğimiz için ismini ptohoschema yazdık.
